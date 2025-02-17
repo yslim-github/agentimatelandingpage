@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentimate - Idea to design in seconds</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  
+  <style>
+    :root {
+      --dark: #0D0D0D;
+      --light: #FFFFFF;
+      --accent: #FF4B4B;
+      --bg-gray: #141414;
+      font-size: 16px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-gray);
+      color: var(--light);
+      min-height: 100vh;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: linear-gradient(
+        to right,
+        #FF4B4B,
+        #FF6B6B,
+        #7B61FF,
+        #61FFB4
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: linear-gradient(
+        to right,
+        rgba(255, 75, 75, 0.2),
+        rgba(123, 97, 255, 0.2)
+      );
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    .logo:hover {
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-link:hover {
+      opacity: 1;
+    }
+
+    .nav-button {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      color: var(--light);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding-top: 4rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: #888;
+      margin-bottom: 2.5rem;
+    }
+
+    .start-designing {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--light);
+      background: linear-gradient(135deg, #FF4B4B 0%, #7B61FF 100%);
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin-bottom: 4rem;
+    }
+
+    .start-designing:hover {
+      transform: translateY(-2px);
+    }
+
+    .command-input {
+      font-family: 'Poppins', monospace;
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      min-height: 1.5rem;
+    }
+
+    .animation-canvas {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .component {
+      background: var(--light);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background-color: var(--accent);
+      margin-left: 2px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="#" class="logo">agentimate</a>
+    <div class="nav-links">
+      <a href="#" class="nav-link">Features</a>
+      <a href="#" class="nav-link">Pricing</a>
+      <a href="#" class="nav-link">About</a>
+      <button class="nav-button">Search</button>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <div class="container">
+      <h1 class="hero-title">Idea to design in seconds.</h1>
+      <p class="hero-subtitle">Your superhuman AI design partner. Start creating for free today.</p>
+      <button class="start-designing">Start Designing</button>
+
+      <div class="command-input"></div>
+      <div class="animation-canvas"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import animations from './animations.js';
+
+    const commandInput = document.querySelector('.command-input');
+    const startButton = document.querySelector('.start-designing');
+    let isAnimating = false;
+
+    startButton.addEventListener('click', () => {
+      if (!isAnimating) {
+        isAnimating = true;
+        startAnimationSequence();
+      }
+    });
+
+    function startAnimationSequence() {
+      const command = animations.getNextCommand();
+      
+      animations.createTypingAnimation(commandInput, command, () => {
+        animations.switchAnimation(command);
+        
+        setTimeout(() => {
+          commandInput.textContent = '';
+          startAnimationSequence();
+        }, 3000);
+      });
+    }
+  </script>
+</body>
+</html> 
